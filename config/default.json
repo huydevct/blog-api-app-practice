@@ -1,0 +1,3 @@
+{
+    "mongoURI": "mongodb+srv://huy:fklep4djLMeFhz1X@cluster0.zfyia.mongodb.net/express-posts?retryWrites=true&w=majority"
+}
