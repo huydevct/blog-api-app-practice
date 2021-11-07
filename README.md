@@ -1,3 +1,3 @@
 # This is a blog app to practice express and rest api
 
-Link: 
+Link: https://blog-express-huyctdev.herokuapp.com/
