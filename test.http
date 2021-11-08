@@ -1,1 +1,6 @@
-GET http://localhost:5000/posts/add
+GET http://localhost:5000/about
+
+
+###
+
+POST http://localhost:5000/user/register
