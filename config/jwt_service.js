@@ -1,5 +1,6 @@
 const JWT = require("jsonwebtoken");
 const createError = require("http-errors");
+const client = require("../config/connection_redis");
 
 const signAccessToken = async (userId) => {
   return new Promise((resolve, reject) => {
@@ -53,21 +54,44 @@ const signRefreshToken = async (userId) => {
 
     JWT.sign(payload, secret, options, (err, token) => {
       if (err) reject(err);
-      resolve(token);
+      client.set(
+        userId.toString(),
+        token,
+        "EX",
+        365 * 24 * 3600,
+        (err, reply) => {
+          if (err) {
+            return reject(createError.InternalServerError());
+          }
+          resolve(token);
+        }
+      );
     });
   });
 };
 
 const verifyRefreshToken = async (refreshToken) => {
-    return new Promise((resolve, reject) => {
-        JWT.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, payload) => {
-            if(err){
-                return reject();
-            }
-            resolve(payload);
-        })
-    })
-}
+  return new Promise((resolve, reject) => {
+    JWT.verify(
+      refreshToken,
+      process.env.REFRESH_TOKEN_SECRET,
+      (err, payload) => {
+        if (err) {
+          return reject();
+        }
+        client.get(payload.userId, (err, reply) => {
+          if (err) {
+            return reject(createError.InternalServerError());
+          }
+          if(refreshToken === reply){
+            return resolve(payload);
+          }
+          return reject(createError.Unauthorized());
+        });
+      }
+    );
+  });
+};
 module.exports = {
   signAccessToken,
   verifyAccessToken,

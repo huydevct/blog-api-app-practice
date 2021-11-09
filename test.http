@@ -15,7 +15,7 @@ POST http://localhost:5000/user/refresh-token
 Content-Type: application/json
 
 {
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MThhNDk3NWNjZDY5ZGVhMDQzZmUxZWUiLCJpYXQiOjE2MzY0NzUzODUsImV4cCI6MTY2ODAzMjk4NX0.854vfHOIWgkDEfRdej3zkVgZi83I2EfUr4y09iriRYs"
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MThhNDk3NWNjZDY5ZGVhMDQzZmUxZWUiLCJpYXQiOjE2MzY0Nzg0NjQsImV4cCI6MTY2ODAzNjA2NH0.6E--mUGGuZaF9vn9PvGpiLheImf62YuFRTVcQYJs_zE"
 }
 
 ###
@@ -29,7 +29,8 @@ Content-Type: application/json
 
 ###
 GET http://localhost:5000/user/getlists
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MThhNDk3NWNjZDY5ZGVhMDQzZmUxZWUiLCJpYXQiOjE2MzY0NzYwNzAsImV4cCI6MTYzNjQ3OTY3MH0.ZGOTiFI8N7VU9-qE_7WeY7qxQmGgIAhdm_l7n_5eQwE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MThhNDk3NWNjZDY5ZGVhMDQzZmUxZWUiLCJpYXQiOjE2MzY0Nzg0NzUsImV4cCI6MTYzNjQ3OTA3NX0.rAIgweh-ilk28RzhsTy4K8yVP5kOlChXYi8GlmyMBqU
 
 ###
 GET http://localhost:5000/user/logout
+
