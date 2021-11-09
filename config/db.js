@@ -5,7 +5,7 @@ const dbUser = config.get('mongoUserURI')
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URI, {
+        await mongoose.connect(process.env.MONGODB_URI || db, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
@@ -18,7 +18,7 @@ const connectDB = async () => {
 
 const connectUserDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_USER_URI, {
+        await mongoose.connect(process.env.MONGODB_USER_URI || dbUser, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
