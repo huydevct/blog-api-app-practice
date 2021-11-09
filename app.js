@@ -6,6 +6,14 @@ const morgan = require('morgan');
 const helmet = require('helmet')
 const createError = require('http-errors');
 require('dotenv').config();
+const client = require('./config/connection_redis')
+
+client.set("foo", "huyctdev");
+client.get("foo", (err, result) => {
+    if(err) throw createError.BadRequest();
+
+    console.log(result);
+});
 
 const postRouter = require('./routes/posts');
 const userRouter = require('./routes/user.route')

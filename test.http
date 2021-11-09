@@ -22,3 +22,6 @@ Content-Type: application/json
 ###
 GET http://localhost:5000/user/getlists
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MThhNDk3NWNjZDY5ZGVhMDQzZmUxZWUiLCJpYXQiOjE2MzY0NzIxNjksImV4cCI6MTYzNjQ3MjE3OX0.SPkVUgbGptW3G_ceJgad_xOpZvMstf4O1zO2gJHYl7g
+
+###
+GET http://localhost:5000/user/logout
