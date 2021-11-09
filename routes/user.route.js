@@ -4,7 +4,7 @@ const createError = require("http-errors");
 
 const User = require("../models/user.model");
 const { userValidate } = require("../config/validation");
-const {signAccessToken, verifyAccessToken, signRefreshToken} = require('../config/jwt_service')
+const {signAccessToken, verifyAccessToken, signRefreshToken, verifyRefreshToken} = require('../config/jwt_service')
 
 userRouter.post("/register", async (req, res, next) => {
   try {
@@ -93,6 +93,26 @@ userRouter.get('/getlists', verifyAccessToken,  (req,res,next) => {
   res.json({
     listUsers
   })
+});
+
+userRouter.post('/refresh-token', async (req,res,next) => {
+  try {
+    console.log(req.body);
+    const {refreshToken} = req.body;
+    if(!refreshToken) throw createError.BadRequest();
+
+    const {userId} = await verifyRefreshToken(refreshToken);
+    const accessToken = await signAccessToken(userId);
+    const refToken = await signRefreshToken(userId);
+
+    res.json({
+      accessToken,
+      refreshToken: refToken,
+    })
+
+  } catch (error) {
+    next(error)
+  }
 })
 
 
