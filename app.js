@@ -1,6 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars');
-const connectDB = require('./config/db');
+const {connectDB, connectUserDB} = require('./config/db');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
 const helmet = require('helmet')
@@ -24,6 +24,7 @@ app.use(express.json());
 app.use(methodOverride('_method'))
 
 connectDB();
+connectUserDB();
 
 // Route basic 
 app.get('/', (req,res,next) => {
