@@ -3,3 +3,9 @@ GET http://localhost:5000/about
 
 ###
 POST http://localhost:5000/user/register
+Content-Type: application/json
+
+{
+    "email": "Huyctdev@gmail.com",
+    "password": "1234"
+}

@@ -21,10 +21,10 @@ app.use(morgan('common'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
 
-connectDB();
-connectUserDB();
+connectDB;
+connectUserDB;
 
 // Route basic 
 app.get('/', (req,res,next) => {
