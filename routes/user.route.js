@@ -4,7 +4,7 @@ const createError = require("http-errors");
 
 const User = require("../models/user.model");
 const { userValidate } = require("../config/validation");
-const {signAccessToken} = require('../config/jwt_service')
+const {signAccessToken, verifyAccessToken} = require('../config/jwt_service')
 
 userRouter.post("/register", async (req, res, next) => {
   try {
@@ -76,6 +76,22 @@ userRouter.post('/login', async (req,res,next) => {
     next(error);
   }
 });
+
+userRouter.get('/getlists', verifyAccessToken,  (req,res,next) => {
+  console.log(req.headers);
+  const listUsers = [
+    {
+      username: 'abc@gmail.com',
+    },
+    {
+      username: 'def@gmail.com',
+    },
+  ];
+  
+  res.json({
+    listUsers
+  })
+})
 
 
 
